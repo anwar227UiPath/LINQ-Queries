@@ -32,6 +32,7 @@
       <x:String>UiPath.Excel.Activities</x:String>
       <x:String>System.Reflection</x:String>
       <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Numerics</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -88,9 +89,10 @@
       <AssemblyReference>System.Collections</AssemblyReference>
       <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
       <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="GroupBy" sap:VirtualizedContainerService.HintSize="885.2,1217.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="GroupBy" sap:VirtualizedContainerService.HintSize="885.2,1335.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="FileName" />
     </Sequence.Variables>
@@ -99,7 +101,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign sap:VirtualizedContainerService.HintSize="518.4,113.6" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign sap:VirtualizedContainerService.HintSize="569.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[FileName]</OutArgument>
       </Assign.To>
@@ -107,13 +109,13 @@
         <InArgument x:TypeArguments="x:String">challenge.xlsx</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:ExcelApplicationScope Password="{x:Null}" SensitivityLabel="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="518.4,1080.8" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" SensitivityOperation="None" Visible="False" WorkbookPath="[FileName]">
+    <ui:ExcelApplicationScope Password="{x:Null}" SensitivityLabel="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="569.6,1198.4" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" SensitivityOperation="None" Visible="False" WorkbookPath="[FileName]">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="484.8,908" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="536,1065.6" sap2010:WorkflowViewState.IdRef="Sequence_4">
             <Sequence.Variables>
               <Variable x:TypeArguments="sd:DataTable" Name="DT" />
               <Variable x:TypeArguments="sd:DataTable" Name="Result_DT" />
@@ -123,14 +125,14 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:ExcelReadRange AddHeaders="True" DataTable="[DT]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="451.2,92" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" SheetName="Sheet4">
+            <ui:ExcelReadRange AddHeaders="True" DataTable="[DT]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="502.4,92" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" SheetName="Sheet4">
               <ui:ExcelReadRange.Range>
                 <InArgument x:TypeArguments="x:String">
                   <Literal x:TypeArguments="x:String" Value="" />
                 </InArgument>
               </ui:ExcelReadRange.Range>
             </ui:ExcelReadRange>
-            <ui:ForEach x:TypeArguments="sl:IGrouping(x:String, sd:DataRow)" CurrentIndex="{x:Null}" DisplayName="For Each dept" sap:VirtualizedContainerService.HintSize="451.2,304" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[DT.AsEnumerable().&#xD;&#xA;    GroupBy(Function(r) r.Field(Of String)(&quot;Department&quot;)).ToList()]">
+            <ui:ForEach x:TypeArguments="sl:IGrouping(x:String, sd:DataRow)" CurrentIndex="{x:Null}" DisplayName="For Each dept" sap:VirtualizedContainerService.HintSize="502.4,56.8" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[DT.AsEnumerable().&#xA;    GroupBy(Function(r) r.Field(Of String)(&quot;Department&quot;)).ToList()]">
               <ui:ForEach.Body>
                 <ActivityAction x:TypeArguments="sl:IGrouping(x:String, sd:DataRow)">
                   <ActivityAction.Argument>
@@ -146,8 +148,15 @@
                   </Sequence>
                 </ActivityAction>
               </ui:ForEach.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
             </ui:ForEach>
-            <Assign sap:VirtualizedContainerService.HintSize="451.2,113.6" sap2010:WorkflowViewState.IdRef="Assign_2">
+            <ui:ExcelWriteRange AddHeaders="True" DataTable="[DT.AsEnumerable.GroupBy(Function(x) x(&quot;Department&quot;).ToString).Select(Function(g) g.First()).CopyToDatatable]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="502.4,120" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_4" SheetName="GroupBy_First" StartingCell="A1" />
+            <Assign sap:VirtualizedContainerService.HintSize="502.4,113.6" sap2010:WorkflowViewState.IdRef="Assign_2">
               <Assign.To>
                 <OutArgument x:TypeArguments="sd:DataTable">[Result_DT]</OutArgument>
               </Assign.To>
@@ -155,58 +164,49 @@
                 <InArgument x:TypeArguments="sd:DataTable">[DT.Clone]</InArgument>
               </Assign.Value>
             </Assign>
-            <Assign sap:VirtualizedContainerService.HintSize="451.2,113.6" sap2010:WorkflowViewState.IdRef="Assign_5">
+            <ui:ExcelWriteRange AddHeaders="True" DataTable="[DT.AsEnumerable.GroupBy(Function(x) x(&quot;Department&quot;).ToString).Select(Function(g) g.First()).CopyToDatatable]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="502.4,120" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_2" SheetName="GroupBy" StartingCell="A1" />
+            <Assign sap:VirtualizedContainerService.HintSize="502.4,115.2" sap2010:WorkflowViewState.IdRef="Assign_5">
               <Assign.To>
                 <OutArgument x:TypeArguments="sd:DataTable">[Result_DT]</OutArgument>
               </Assign.To>
               <Assign.Value>
-                <InArgument x:TypeArguments="sd:DataTable">[DT.AsEnumerable.GroupBy(Function(x) x("Department").ToString).Select(Function(g) g.First()).CopyToDatatable]</InArgument>
+                <InArgument x:TypeArguments="sd:DataTable" xml:space="preserve">[DT.AsEnumerable.
+GroupBy(Function(x) x("Department").ToString).
+Select(Function(g)  Result_DT.Rows.Add(
+g.Key,
+g.Count.ToString,
+String.Join(" ,",g.Select(Function(r) r("Name").ToString))
+)
+).CopyToDataTable]</InArgument>
               </Assign.Value>
             </Assign>
-            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="451.2,56.8" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="502.4,276.8" sap2010:WorkflowViewState.IdRef="CommentOut_3">
               <ui:CommentOut.Body>
-                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="467.2,164.8" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="467.2,166.4" sap2010:WorkflowViewState.IdRef="Sequence_8">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Assign sap:VirtualizedContainerService.HintSize="433.6,104.8" sap2010:WorkflowViewState.IdRef="Assign_3">
+                  <Assign sap:VirtualizedContainerService.HintSize="433.6,106.4" sap2010:WorkflowViewState.IdRef="Assign_6">
                     <Assign.To>
                       <OutArgument x:TypeArguments="sd:DataTable">[Result_DT]</OutArgument>
                     </Assign.To>
                     <Assign.Value>
-                      <InArgument x:TypeArguments="sd:DataTable">[DT.AsEnumerable().OrderBy(Function(x) x("Salary").ToString).CopyToDataTable]</InArgument>
+                      <InArgument x:TypeArguments="sd:DataTable" xml:space="preserve">[DT.AsEnumerable.
+GroupBy(Function(x) x("Department").ToString).
+Select(Function(g)  Result_DT.Rows.Add(
+g.Key,
+g.Count.ToString,
+g("Name").ToString
+)
+).CopyToDataTable]</InArgument>
                     </Assign.Value>
                   </Assign>
                 </Sequence>
               </ui:CommentOut.Body>
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
             </ui:CommentOut>
-            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="451.2,56.8" sap2010:WorkflowViewState.IdRef="CommentOut_2">
-              <ui:CommentOut.Body>
-                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="449.6,225.6" sap2010:WorkflowViewState.IdRef="Sequence_3">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,165.6" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[String.Join(&quot;  &quot;, DT.AsEnumerable().Where(Function(x) CInt(x(&quot;Salary&quot;).ToString()) &gt;= 40000 And CInt(x(&quot;Salary&quot;).ToString()) &lt;= 50000).Select(Function(r) r(&quot;First Name&quot;).ToString()).ToArray())]" />
-                </Sequence>
-              </ui:CommentOut.Body>
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-            </ui:CommentOut>
-            <ui:ExcelWriteRange AddHeaders="True" DataTable="[Result_DT]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="451.2,111.2" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_2" SheetName="GroupBy" StartingCell="A1" />
+            <ui:ExcelWriteRange AddHeaders="True" DataTable="[Result_DT]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="502.4,111.2" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_3" SheetName="GroupBy" StartingCell="A1" />
           </Sequence>
         </ActivityAction>
       </ui:ExcelApplicationScope.Body>
