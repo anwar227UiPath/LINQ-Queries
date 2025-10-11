@@ -89,7 +89,7 @@
       <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Joins" sap:VirtualizedContainerService.HintSize="885.2,1224" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Joins" sap:VirtualizedContainerService.HintSize="885.2,1024" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="FileName" />
     </Sequence.Variables>
@@ -98,7 +98,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign sap:VirtualizedContainerService.HintSize="569.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign sap:VirtualizedContainerService.HintSize="500.8,113.6" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[FileName]</OutArgument>
       </Assign.To>
@@ -106,13 +106,13 @@
         <InArgument x:TypeArguments="x:String">challenge.xlsx</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:ExcelApplicationScope Password="{x:Null}" SensitivityLabel="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="569.6,1087.2" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" SensitivityOperation="None" Visible="False" WorkbookPath="[FileName]">
+    <ui:ExcelApplicationScope Password="{x:Null}" SensitivityLabel="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="500.8,887.2" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" SensitivityOperation="None" Visible="False" WorkbookPath="[FileName]">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="536,914.4" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="467.2,754.4" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="sd:DataTable" Name="B_DT" />
               <Variable x:TypeArguments="sd:DataTable" Name="A_DT" />
@@ -123,38 +123,39 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:BuildDataTable DataTable="[Result_DT]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="502.4,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xD;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xD;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xD;&#xA;      &lt;xs:complexType&gt;&#xD;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xD;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xD;&#xA;            &lt;xs:complexType&gt;&#xD;&#xA;              &lt;xs:sequence&gt;&#xD;&#xA;                &lt;xs:element name=&quot;ID&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xD;&#xA;                  &lt;xs:simpleType&gt;&#xD;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xD;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xD;&#xA;                    &lt;/xs:restriction&gt;&#xD;&#xA;                  &lt;/xs:simpleType&gt;&#xD;&#xA;                &lt;/xs:element&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Name&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Department&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;              &lt;/xs:sequence&gt;&#xD;&#xA;            &lt;/xs:complexType&gt;&#xD;&#xA;          &lt;/xs:element&gt;&#xD;&#xA;        &lt;/xs:choice&gt;&#xD;&#xA;      &lt;/xs:complexType&gt;&#xD;&#xA;    &lt;/xs:element&gt;&#xD;&#xA;  &lt;/xs:schema&gt;&#xD;&#xA;&lt;/NewDataSet&gt;" />
-            <ui:ExcelReadRange AddHeaders="True" DataTable="[A_DT]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="502.4,92" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" SheetName="A">
+            <ui:BuildDataTable DataTable="[Result_DT]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="433.6,92" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;ID&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Name&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Department&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
+            <ui:ExcelReadRange AddHeaders="True" DataTable="[A_DT]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="433.6,92" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" SheetName="A">
               <ui:ExcelReadRange.Range>
                 <InArgument x:TypeArguments="x:String">
                   <Literal x:TypeArguments="x:String" Value="" />
                 </InArgument>
               </ui:ExcelReadRange.Range>
             </ui:ExcelReadRange>
-            <ui:ExcelReadRange AddHeaders="True" DataTable="[B_DT]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="502.4,92" sap2010:WorkflowViewState.IdRef="ExcelReadRange_2" SheetName="B">
+            <ui:ExcelReadRange AddHeaders="True" DataTable="[B_DT]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="433.6,92" sap2010:WorkflowViewState.IdRef="ExcelReadRange_2" SheetName="B">
               <ui:ExcelReadRange.Range>
                 <InArgument x:TypeArguments="x:String">
                   <Literal x:TypeArguments="x:String" Value="" />
                 </InArgument>
               </ui:ExcelReadRange.Range>
             </ui:ExcelReadRange>
-            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="502.4,275.2" sap2010:WorkflowViewState.IdRef="CommentOut_2">
-              <ui:CommentOut.Body>
-                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="467.2,164.8" sap2010:WorkflowViewState.IdRef="Sequence_4">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <Assign sap:VirtualizedContainerService.HintSize="433.6,104.8" sap2010:WorkflowViewState.IdRef="Assign_3">
-                    <Assign.To>
-                      <OutArgument x:TypeArguments="sd:DataTable">[Result_DT]</OutArgument>
-                    </Assign.To>
-                  </Assign>
-                </Sequence>
-              </ui:CommentOut.Body>
-            </ui:CommentOut>
-            <ui:ExcelWriteRange AddHeaders="True" sap2010:Annotation.AnnotationText="A_DT.AsEnumerable().&#xD;&#xA;Join(B_DT.AsEnumerable(),&#xD;&#xA;Function(emp) emp(&quot;ID&quot;).ToString,&#xD;&#xA;Function(dept) dept(&quot;ID&quot;).ToString,&#xD;&#xA;Function(emp,dept) New Object(){&#xD;&#xA;  emp(&quot;ID&quot;).ToString,&#xD;&#xA;  emp(&quot;First Name&quot;).ToString,&#xD;&#xA;  dept(&quot;Dept&quot;).ToString&#xD;&#xA;  }&#xD;&#xA;  ).Select(Function(x) Result_DT.Rows.Add(x)).CopyToDataTable()" DataTable="[A_DT.AsEnumerable().&#xD;&#xA;Join(B_DT.AsEnumerable(),&#xD;&#xA;Function(emp) emp(&quot;ID&quot;).ToString,&#xD;&#xA;Function(dept) dept(&quot;ID&quot;).ToString,&#xD;&#xA;Function(emp,dept) New Object(){&#xD;&#xA;&#x9;&#x9;emp(&quot;ID&quot;).ToString,&#xD;&#xA;&#x9;&#x9;emp(&quot;First Name&quot;).ToString,&#xD;&#xA;&#x9;&#x9;dept(&quot;Dept&quot;).ToString&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;).Select(Function(x) Result_DT.Rows.Add(x)).CopyToDataTable()]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="502.4,303.2" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_1" SheetName="Join_Result" StartingCell="A1">
+            <Assign sap:VirtualizedContainerService.HintSize="433.6,115.2" sap2010:WorkflowViewState.IdRef="Assign_4">
+              <Assign.To>
+                <OutArgument x:TypeArguments="sd:DataTable">[Result_DT]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="sd:DataTable" xml:space="preserve">[A_DT.AsEnumerable().
+Join(B_DT.AsEnumerable(),
+Function(emp) emp("ID").ToString,
+Function(dept) dept("ID").ToString,
+Function(emp,dept) New Object(){
+		emp("ID").ToString,
+		emp("First Name").ToString,
+		dept("Dept").ToString
+		}
+		).Select(Function(x) Result_DT.Rows.Add(x)).CopyToDataTable()]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:ExcelWriteRange AddHeaders="True" sap2010:Annotation.AnnotationText="A_DT.AsEnumerable().&#xA;Join(B_DT.AsEnumerable(),&#xA;Function(emp) emp(&quot;ID&quot;).ToString,&#xA;Function(dept) dept(&quot;ID&quot;).ToString,&#xA;Function(emp,dept) New Object(){&#xA;  emp(&quot;ID&quot;).ToString,&#xA;  emp(&quot;First Name&quot;).ToString,&#xA;  dept(&quot;Dept&quot;).ToString&#xA;  }&#xA;  ).Select(Function(x) Result_DT.Rows.Add(x)).CopyToDataTable()" DataTable="[A_DT.AsEnumerable().&#xD;&#xA;Join(B_DT.AsEnumerable(),&#xD;&#xA;Function(emp) emp(&quot;ID&quot;).ToString,&#xD;&#xA;Function(dept) dept(&quot;ID&quot;).ToString,&#xD;&#xA;Function(emp,dept) New Object(){&#xD;&#xA;&#x9;&#x9;emp(&quot;ID&quot;).ToString,&#xD;&#xA;&#x9;&#x9;emp(&quot;First Name&quot;).ToString,&#xD;&#xA;&#x9;&#x9;dept(&quot;Dept&quot;).ToString&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;).Select(Function(x) Result_DT.Rows.Add(x)).CopyToDataTable()]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="433.6,303.2" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_1" SheetName="Join_Result" StartingCell="A1">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
